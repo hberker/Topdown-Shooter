@@ -530,19 +530,20 @@ class healthUp(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(medpac, (25, 25))
         self.rect = self.image.get_rect()
         self.radius = 20
-        #self.radius = int(self.radius * 85 / 2)
+        #self.rect.x = random.randrange(screenW - self.rect.width)
+        #self.rect.y = random.randrange(-100,-40)
         self.rect.x = random.randrange(screenW - self.rect.width)
-        self.rect.y = random.randrange(-100,-40)
-        self.speedy = random.randrange(1,3)
-        self.speedx = random.randrange(-2,2)
+        self.rect.y = random.randrange(0, (screenH - self.rect.width))
+        #self.speedy = random.randrange(1,3)
+        #self.speedx = random.randrange(-2,2)
     def update(self):
-        self.rect.x += self.speedx
-        self.rect.y += self.speedy
+        #self.rect.x += self.speedx
+        #self.rect.y += self.speedy
         if self.rect.top > screenH + 10:
             self.rect.x = random.randrange(screenW - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
-            self.speedy = random.randrange(1, 3)
-            self.speedx = random.randrange(-1, 1)
+            #self.speedy = random.randrange(1, 3)
+            #self.speedx = random.randrange(-1, 1)
 class Ammo(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
