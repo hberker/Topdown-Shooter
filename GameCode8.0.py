@@ -228,30 +228,36 @@ class Enemy(pygame.sprite.Sprite):
             dy += 1
         else:
             dy -= 1
-
-        if self.rect.top < player.rect.bottom:
-            if self.rect.left > player.rect.right:
+        EnemyPos = EnemyDown
+        if player.rect.top > (self.rect.top - 25) and player.rect.bottom < (self.rect.bottom + 25):
+            if player.rect.right < self.rect.left:
+                EnemyPos = EnemyLeft
+            else:
+                EnemyPos = EnemyRight
+        elif player.rect.top > self.rect.bottom:
+            if player.rect.right < self.rect.left:
                 EnemyPos = EnemyDownLeft
-            if self.rect.top < player.rect.left:
-                EnemyPos = EnemyUpRight
-            else:
-                EnemyPos = EnemyDown
-        else:
-            if self.rect.bottom > player.rect.top:
-                print("trur")
-            if self.rect.right > player.rect.left:
+            elif player.rect.left > self.rect.right:
                 EnemyPos = EnemyDownRight
-            if self.rect.left > player.rect.right:
+            elif player.rect.left > self.rect.left and player.rect.right < self.rect.right:
+                EnemyPos = EnemyDown
+
+        elif player.rect.bottom < self.rect.top:
+            if player.rect.right < self.rect.left:
                 EnemyPos = EnemyUpLeft
-            else:
+            elif player.rect.left > self.rect.right:
+                EnemyPos = EnemyUpRight
+            else: #player.rect.left > self.rect.left and player.rect.right < self.rect.right:
                 EnemyPos = EnemyUp
 
+
+        self.image = EnemyPos
         if EnemyPos == EnemyUp:
-            self.image = pygame.transform.scale(EnemyUp, (40, 40))
+            self.image = pygame.transform.scale(EnemyUp, (50, 50))
         if EnemyPos == EnemyDown:
             self.image = pygame.transform.scale(EnemyDown, (40, 40))
         if EnemyPos == EnemyLeft:
-            self.image = pygame.transform.scale(EnemyLeft, (40, 40))
+            self.image = pygame.transform.scale(EnemyLeft, (50, 50))
         if EnemyPos == EnemyRight:
             self.image = pygame.transform.scale(EnemyRight, (40, 40))
         if EnemyPos == EnemyUpRight:
@@ -259,10 +265,9 @@ class Enemy(pygame.sprite.Sprite):
         if EnemyPos == EnemyDownRight:
             self.image = pygame.transform.scale(EnemyDownRight, (40, 40))
         if EnemyPos == EnemyDownLeft:
-            self.image = pygame.transform.scale(EnemyDownLeft, (20, 20))
+            self.image = pygame.transform.scale(EnemyDownLeft, (40, 40))
         if EnemyPos == EnemyUpLeft:
             self.image = pygame.transform.scale(EnemyUpLeft, (40, 40))
-        self.image = EnemyPos
         if self.rect.top > screenH:
             self.rect.x = random.randrange(screenW - self.rect.width)
             self.rect.y = random.randrange(-50, -40)
