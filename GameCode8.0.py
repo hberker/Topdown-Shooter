@@ -15,7 +15,7 @@ EnemyDown = pygame.image.load('Down.png')
 EnemyDownLeft = pygame.image.load('DownLeft.png')
 EnemyDownRight = pygame.image.load('DownRight.png')
 EnemyUp = pygame.image.load('Up1.png')
-EnemyLeft = pygame.image.load('Left.png')
+EnemyLeft = pygame.image.load('Left1.png')
 
 
 playerUp = pygame.image.load('playerUp.png')
@@ -253,11 +253,11 @@ class Enemy(pygame.sprite.Sprite):
 
         self.image = EnemyPos
         if EnemyPos == EnemyUp:
-            self.image = pygame.transform.scale(EnemyUp, (50, 50))
+            self.image = pygame.transform.scale(EnemyUp, (40, 40))
         if EnemyPos == EnemyDown:
             self.image = pygame.transform.scale(EnemyDown, (40, 40))
         if EnemyPos == EnemyLeft:
-            self.image = pygame.transform.scale(EnemyLeft, (50, 50))
+            self.image = pygame.transform.scale(EnemyLeft, (40, 40))
         if EnemyPos == EnemyRight:
             self.image = pygame.transform.scale(EnemyRight, (40, 40))
         if EnemyPos == EnemyUpRight:
@@ -325,6 +325,45 @@ class EnemyY(pygame.sprite.Sprite):
         else:
             dy -= 1
             print(dy)
+        EnemyPos = EnemyDown
+        if player.rect.top > (self.rect.top - 25) and player.rect.bottom < (self.rect.bottom + 25):
+            if player.rect.right < self.rect.left:
+                EnemyPos = EnemyLeft
+            else:
+                EnemyPos = EnemyRight
+        elif player.rect.top > self.rect.bottom:
+            if player.rect.right < self.rect.left:
+                EnemyPos = EnemyDownLeft
+            elif player.rect.left > self.rect.right:
+                EnemyPos = EnemyDownRight
+            elif player.rect.left > self.rect.left and player.rect.right < self.rect.right:
+                EnemyPos = EnemyDown
+
+        elif player.rect.bottom < self.rect.top:
+            if player.rect.right < self.rect.left:
+                EnemyPos = EnemyUpLeft
+            elif player.rect.left > self.rect.right:
+                EnemyPos = EnemyUpRight
+            else:  # player.rect.left > self.rect.left and player.rect.right < self.rect.right:
+                EnemyPos = EnemyUp
+
+        self.image = EnemyPos
+        if EnemyPos == EnemyUp:
+            self.image = pygame.transform.scale(EnemyUp, (40, 40))
+        if EnemyPos == EnemyDown:
+            self.image = pygame.transform.scale(EnemyDown, (40, 40))
+        if EnemyPos == EnemyLeft:
+            self.image = pygame.transform.scale(EnemyLeft, (40, 40))
+        if EnemyPos == EnemyRight:
+            self.image = pygame.transform.scale(EnemyRight, (40, 40))
+        if EnemyPos == EnemyUpRight:
+            self.image = pygame.transform.scale(EnemyUpRight, (40, 40))
+        if EnemyPos == EnemyDownRight:
+            self.image = pygame.transform.scale(EnemyDownRight, (40, 40))
+        if EnemyPos == EnemyDownLeft:
+            self.image = pygame.transform.scale(EnemyDownLeft, (40, 40))
+        if EnemyPos == EnemyUpLeft:
+            self.image = pygame.transform.scale(EnemyUpLeft, (40, 40))
 
         if self.rect.top > screenH:
             self.rect.x = random.randrange(screenW - self.rect.width)
