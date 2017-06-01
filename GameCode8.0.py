@@ -17,6 +17,9 @@ EnemyDownRight = pygame.image.load('DownRight.png')
 EnemyUp = pygame.image.load('Up1.png')
 EnemyLeft = pygame.image.load('Left1.png')
 
+ammocart = pygame.image.load('ammo.png')
+
+numShots = 100
 
 playerUp = pygame.image.load('playerUp.png')
 playerRight = pygame.image.load('playerRight.png')
@@ -57,6 +60,15 @@ blue = (0,0,255)
 yellow = (255,255,51)
 
 font_name = pygame.font.match_font('arial')
+def ammobar(numshots):
+    if numShots > 75:
+        barColor = green
+    elif numShots > 50:
+        barColor = yellow
+    else:
+        barColor = red
+    pygame.draw.rect(screen,black,(30,70,580,30))
+    pygame.draw.rect(screen, barColor,(40,80, numshots * 5.6, 10))
 
 def healthbar(playerHealth):
     if playerHealth > 75:
@@ -315,16 +327,13 @@ class EnemyY(pygame.sprite.Sprite):
         dy = 0
         if self.rect.x < player.rect.x:
             dx += 1
-            print(dx)
         else:
             dx -= 1
-            print(dx)
         if self.rect.y < player.rect.y:
             dy += 1
-            print(dy)
         else:
             dy -= 1
-            print(dy)
+
         EnemyPos = EnemyDown
         if player.rect.top > (self.rect.top - 25) and player.rect.bottom < (self.rect.bottom + 25):
             if player.rect.right < self.rect.left:
@@ -533,10 +542,32 @@ class healthUp(pygame.sprite.Sprite):
             self.rect.x = random.randrange(screenW - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 3)
+            self.speedx = random.randrange(-1, 1)
+class Ammo(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((25,25))
+        self.image = ammocart
+        self.image = pygame.transform.scale(ammocart, (25, 25))
+        self.rect = self.image.get_rect()
+        self.radius = 20
+        self.rect.x = random.randrange(screenW - self.rect.width)
+        self.rect.y = random.randrange(0, (screenH - self.rect.width))
 
+        #self.speedy = random.randrange(1,3)
+        #self.speedx = random.randrange(-1,1)
+    def update(self):
+        #self.rect.x += self.speedx
+        #self.rect.y += self.speedy
+        if self.rect.top > screenH + 10:
+            self.rect.x = random.randrange(screenW - self.rect.width)
+            self.rect.y = random.randrange(0, (screenH - self.rect.width))
+            #self.speedy = random.randrange(1, 3)
+            #self.speedx = random.randrange(-1, 1)
 
 
 all_sprites = pygame.sprite.Group()
+ammoUps = pygame.sprite.Group()
 powerUps = pygame.sprite.Group()
 player = Player()
 enemys = pygame.sprite.Group()
@@ -563,6 +594,7 @@ def wavescreen(wave):
     wave = str(wave)
     screen.blit(background, background_rect)
     healthbar(playerHealth)
+    ammobar(numShots)
     draw_text(screen, "Kills " + str(score), 30, screenW / 2, 10)
     all_sprites.draw(screen)
     draw_text(screen, wave, 100, screenW / 2, screenH / 3)
@@ -588,6 +620,12 @@ def createPowerUp(x):
         p = healthUp()
         all_sprites.add(p)
         powerUps.add(p)
+def createAmmoCart(x):
+    for i in range(x):
+        a = Ammo()
+        all_sprites.add(a)
+        ammoUps.add(a)
+
 
 
 while on:
@@ -603,6 +641,7 @@ while on:
         all_sprites.add(player)
         keys = {'right': False, 'up': False, 'left': False, 'down': False}
         score = 0
+        numShots = 100
         gamesteper = 0
 
     clock.tick(FPS)
@@ -620,22 +659,26 @@ while on:
             if event.key == pygame.K_d:
                 keys['right'] = True
             if event.key == pygame.K_SPACE:
-                if shootdir == 1:
-                    player.shootUp()
-                if shootdir == 2:
-                    player.shootRight()
-                if shootdir == 3:
-                    player.shootLeft()
-                if shootdir == 4:
-                    player.shootDown()
-                if shootdir == 5:
-                    player.shootUpRight()
-                if shootdir == 8:
-                    player.shootDownRight()
-                if shootdir == 6:
-                    player.shootUpLeft()
-                if shootdir == 7:
-                    player.shootDownLeft()
+                if numShots > 0:
+                    if shootdir == 1:
+                        player.shootUp()
+                    if shootdir == 2:
+                        player.shootRight()
+                    if shootdir == 3:
+                        player.shootLeft()
+                    if shootdir == 4:
+                        player.shootDown()
+                    if shootdir == 5:
+                        player.shootUpRight()
+                    if shootdir == 8:
+                        player.shootDownRight()
+                    if shootdir == 6:
+                        player.shootUpLeft()
+                    if shootdir == 7:
+                        player.shootDownLeft()
+                    numShots -= 1
+                else:
+                    print("out of bullets")
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_d:
@@ -683,16 +726,22 @@ while on:
     background_rect = background.get_rect()
     all_sprites.update()
 
+    ammoCols = pygame.sprite.spritecollide(player, ammoUps, True)
     powerCols = pygame.sprite.spritecollide(player, powerUps, True)
     cols = pygame.sprite.groupcollide(bullets, enemys, True, True)
     colsE = pygame.sprite.spritecollide(player, enemys, True, pygame.sprite.collide_circle)
 
     if powerCols:
         if playerHealth == 100:
-            print("full health")
+            print("Full health")
         else:
             playerHealth += 10
         GameSteper += 1
+    if ammoCols:
+        if numShots == 100:
+            print("Cant carry anymore ammo")
+        else:
+            numShots+= 10
 
     for i in colsE:
         GameSteper += 1
@@ -712,6 +761,7 @@ while on:
         createEnemy(1)
         createEnemyY(1)
         GameSteper += 1
+        createAmmoCart(1)
 
     if GameSteper == 3:
         wavescreen("Wave: 2")
@@ -754,6 +804,7 @@ while on:
     screen.fill(white)
     screen.blit(background, background_rect)
     healthbar(playerHealth)
+    ammobar(numShots)
     all_sprites.draw(screen)
     draw_text(screen, "Kills " + str(score), 30, screenW / 2, 10)
     pygame.display.flip()
