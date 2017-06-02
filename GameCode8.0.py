@@ -19,7 +19,11 @@ EnemyLeft = pygame.image.load('Left1.png')
 
 ammocart = pygame.image.load('ammo.png')
 
+machinegunImg = pygame.image.load('MachineGun1.png')
+
 shotgun = False
+
+machinegun = False
 
 getGun = (random.randrange(1,10) - 1)
 print(getGun)
@@ -558,7 +562,29 @@ class Shotgun(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((25,25))
         self.image = shotgunImg
-        self.image = pygame.transform.scale(shotgunImg, (50, 20))
+        self.image = pygame.transform.scale(shotgunImg, (70, 20))
+        self.rect = self.image.get_rect()
+        self.radius = 20
+        #self.rect.x = random.randrange(screenW - self.rect.width)
+        #self.rect.y = random.randrange(-100,-40)
+        self.rect.x = random.randrange(screenW - self.rect.width)
+        self.rect.y = random.randrange(0, (screenH - self.rect.width))
+        #self.speedy = random.randrange(1,3)
+        #self.speedx = random.randrange(-2,2)
+    def update(self):
+        #self.rect.x += self.speedx
+        #self.rect.y += self.speedy
+        if self.rect.top > screenH + 10:
+            self.rect.x = random.randrange(screenW - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            #self.speedy = random.randrange(1, 3)
+            #self.speedx = random.randrange(-1, 1)
+class MachinGun(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((70,20))
+        self.image = machinegunImg
+        self.image = pygame.transform.scale(machinegunImg, (70, 20))
         self.rect = self.image.get_rect()
         self.radius = 20
         #self.rect.x = random.randrange(screenW - self.rect.width)
@@ -599,6 +625,7 @@ class Ammo(pygame.sprite.Sprite):
 
 
 all_sprites = pygame.sprite.Group()
+machineguner = pygame.sprite.Group()
 shotGuner = pygame.sprite.Group()
 ammoUps = pygame.sprite.Group()
 powerUps = pygame.sprite.Group()
@@ -633,14 +660,11 @@ def wavescreen(wave):
     draw_text(screen, wave, 100, screenW / 2, screenH / 3)
     pygame.display.flip()
     pygame.time.delay(2000)
-
 def createEnemyY(x):
     for i in range(x):
         eY = EnemyY()
         all_sprites.add(eY)
         enemys.add(eY)
-
-
 def createEnemy(x):
     for i in range(x):
         e = Enemy()
@@ -650,11 +674,11 @@ def createShotGun(x):
     e = Shotgun()
     all_sprites.add(e)
     shotGuner.add(e)
-
-
-
-
-
+def createMachineGun(x):
+    for i in range(x):
+        e = MachinGun()
+        all_sprites.add(e)
+        machineguner.add(e)
 def createPowerUp(x):
     for i in range(x):
         p = healthUp()
@@ -665,8 +689,6 @@ def createAmmoCart(x):
         a = Ammo()
         all_sprites.add(a)
         ammoUps.add(a)
-
-
 def create(wave_num, enemys, powerUps, ammoUps):
     wavescreen("Wave: " + str(wave_num))
     createEnemyY(enemys)
@@ -674,7 +696,6 @@ def create(wave_num, enemys, powerUps, ammoUps):
     createPowerUp(powerUps)
     createAmmoCart(ammoUps)
 while on:
-
     if game_over:
         startScreen()
         game_over = False
@@ -687,12 +708,11 @@ while on:
         keys = {'right': False, 'up': False, 'left': False, 'down': False}
         score = 0
         ups = 0
+        machinegun = False
         shotgun = False
         numShots = 100
         GameSteper = 0
-
     clock.tick(FPS)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             on = False
@@ -706,26 +726,52 @@ while on:
             if event.key == pygame.K_d:
                 keys['right'] = True
             if event.key == pygame.K_SPACE:
+                print(machinegun)
                 if numShots > 0:
-                    if shootdir == 1:
-                        player.shootUp()
-                    if shootdir == 2:
-                        player.shootRight()
-                    if shootdir == 3:
-                        player.shootLeft()
-                    if shootdir == 4:
-                        player.shootDown()
-                    if shootdir == 5:
-                        player.shootUpRight()
-                    if shootdir == 8:
-                        player.shootDownRight()
-                    if shootdir == 6:
-                        player.shootUpLeft()
-                    if shootdir == 7:
-                        player.shootDownLeft()
-                    numShots -= 1
-                else:
-                    print("out of bullets")
+                    if machinegun == False:
+                        if numShots > 0:
+                            if shootdir == 1:
+                                player.shootUp()
+                            if shootdir == 2:
+                                player.shootRight()
+                            if shootdir == 3:
+                                player.shootLeft()
+                            if shootdir == 4:
+                                player.shootDown()
+                            if shootdir == 5:
+                                player.shootUpRight()
+                            if shootdir == 8:
+                                player.shootDownRight()
+                            if shootdir == 6:
+                                player.shootUpLeft()
+                            if shootdir == 7:
+                                player.shootDownLeft()
+                            numShots -= 1
+                        else:
+                            print("out of bullets")
+            if event.key == pygame.K_k:
+                if machinegun == True:
+                    if numShots > 0:
+                        if shootdir == 1:
+                            for i in range(100):
+                                player.shootUp()
+                                print('s')
+                        if shootdir == 2:
+                            player.shootRight()
+                        if shootdir == 3:
+                            player.shootLeft()
+                        if shootdir == 4:
+                            player.shootDown()
+                        if shootdir == 5:
+                            player.shootUpRight()
+                        if shootdir == 8:
+                            player.shootDownRight()
+                        if shootdir == 6:
+                            player.shootUpLeft()
+                        if shootdir == 7:
+                            player.shootDownLeft()
+                        numShots -= 1
+
             if event.key == pygame.K_m:
                 if shotgun == True:
                     if numShots > 0:
@@ -762,8 +808,6 @@ while on:
                             player.shootLeft()
                             player.shootDown()
                         numShots -= 5
-
-
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_d:
                 keys['right'] = False
@@ -814,9 +858,13 @@ while on:
     powerCols = pygame.sprite.spritecollide(player, powerUps, True)
     cols = pygame.sprite.groupcollide(bullets, enemys, True, True)
     colsE = pygame.sprite.spritecollide(player, enemys, True, pygame.sprite.collide_circle)
+    getMachineGun = pygame.sprite.spritecollide(player, machineguner, True)
 
+    if getMachineGun:
+        machinegun = True
     if getShotGun:
         shotgun = True
+
     if powerCols:
         if playerHealth == 100:
             print("Full health")
@@ -839,15 +887,19 @@ while on:
             playerHealth -= 10
     for x in cols:
         score += 1
-
+    if GameSteper == 0:
+        createMachineGun(1)
     if len(enemys) == 0:
-        if GameSteper > 6:
-            ups = random.randrange(1,3)
+        if GameSteper > 7:
+            ups = random.randrange(1,2)
         create(GameSteper + 1,GameSteper + 2,ups,ups)
         if GameSteper == getGun:
             createShotGun(1)
         if GameSteper == loseGun:
             shotgun = False
+        if GameSteper == 20:
+            createMachineGun(1)
+            machinegun = True
 
         GameSteper += 1
 
