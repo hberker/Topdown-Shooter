@@ -228,7 +228,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.radius = 20
         self.rect.x = random.randrange(screenW - self.rect.width)
-        self.rect.y = random.randrange(-50,-10)
+        self.rect.y = 2#random.randrange(-15,-10)
     def update(self):
 
         dx = 0; dy = 0
@@ -319,7 +319,7 @@ class EnemyY(pygame.sprite.Sprite):
 
         self.radius = 20
         self.rect.y = random.randrange(screenH - self.rect.width)
-        self.rect.x = random.randrange(-50,-20)
+        self.rect.x = 2 #random.randrange(-15,-10)
 
 
     def update(self):
@@ -628,7 +628,12 @@ def createAmmoCart(x):
         ammoUps.add(a)
 
 
-
+def create(wave_num, enemys, powerUps, ammoUps):
+    wavescreen("Wave: " + str(wave_num))
+    createEnemyY(enemys)
+    createEnemy(enemys)
+    createPowerUp(powerUps)
+    createAmmoCart(ammoUps)
 while on:
 
     if game_over:
@@ -740,10 +745,11 @@ while on:
         GameSteper += 1
     if ammoCols:
         if numShots == 100:
-            print("Cant carry anymore ammo")
+            print("cant carry anymore ammo")
+        if numShots + 50 > 100:
+            numShots = 100
         else:
-            numShots+= 10
-
+            numShots += 50
     for i in colsE:
         GameSteper += 1
         if playerHealth == 0:
@@ -758,46 +764,26 @@ while on:
         score += 1
 
     if GameSteper == 0:
-        wavescreen("Wave : 1 ")
-        createEnemy(1)
-        createEnemyY(1)
+        create(1,1,1,1)
         GameSteper += 1
-        createAmmoCart(1)
-
     if GameSteper == 3:
-        wavescreen("Wave: 2")
-        createEnemyY(2)
-        createEnemy(2)
+        create(2,2,0,0)
         GameSteper += 1
-    if GameSteper == 7:
-        wavescreen("Wave: 3")
-        createEnemyY(3)
-        createEnemy(3)
+    if GameSteper == 8:
+        create(3,4,0,0)
         GameSteper += 1
-    if GameSteper ==14:
-        wavescreen("Wave: 4")
-        createEnemy(5)
-        createEnemyY(6)
-        createPowerUp(1)
+    if GameSteper == 15:
+        create(4,6,1,0)
         GameSteper+= 1
-    if GameSteper == 24:
-        wavescreen("Wave: 5")
-        createPowerUp(3)
-        createEnemyY(9)
-        createEnemy(10)
-        GameSteper += 1
-    if GameSteper == 43:
-        wavescreen("Wave: 6")
-        createPowerUp(4)
-        createEnemyY(12)
-        createEnemy(11)
-        GameSteper += 1
-    if GameSteper == 68:
-        wavescreen("Wave: 7")
-        createPowerUp(6)
-        createEnemyY(15)
-        createEnemy(15)
-        GameSteper += 1
+    if GameSteper == 25:
+        create(5,8,1,1)
+        GameSteper+= 1
+    if GameSteper == 38:
+        create(6,10,2,1)
+        GameSteper+=1
+
+
+    print(GameSteper)
 
 
 
