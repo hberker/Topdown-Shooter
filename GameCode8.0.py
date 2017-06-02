@@ -20,7 +20,7 @@ EnemyLeft = pygame.image.load('Left1.png')
 ammocart = pygame.image.load('ammo.png')
 
 numShots = 100
-
+ups = 0
 playerUp = pygame.image.load('playerUp.png')
 playerRight = pygame.image.load('playerRight.png')
 playerDown = pygame.image.load('playerDown.png')
@@ -647,6 +647,7 @@ while on:
         all_sprites.add(player)
         keys = {'right': False, 'up': False, 'left': False, 'down': False}
         score = 0
+        ups = 0
         numShots = 100
         gamesteper = 0
 
@@ -742,7 +743,6 @@ while on:
             print("Full health")
         else:
             playerHealth += 10
-        GameSteper += 1
     if ammoCols:
         if numShots == 100:
             print("cant carry anymore ammo")
@@ -751,7 +751,6 @@ while on:
         else:
             numShots += 50
     for i in colsE:
-        GameSteper += 1
         if playerHealth == 0:
 
             playerHealth = 100
@@ -760,30 +759,17 @@ while on:
         else:
             playerHealth -= 10
     for x in cols:
-        GameSteper += 1
         score += 1
 
-    if GameSteper == 0:
-        create(1,1,1,1)
+    if len(enemys) == 0:
+        if GameSteper > 6:
+            ups += 1
+        create(GameSteper + 1,GameSteper + 2,ups,ups)
         GameSteper += 1
-    if GameSteper == 3:
-        create(2,2,0,0)
-        GameSteper += 1
-    if GameSteper == 8:
-        create(3,4,0,0)
-        GameSteper += 1
-    if GameSteper == 15:
-        create(4,6,1,0)
-        GameSteper+= 1
-    if GameSteper == 25:
-        create(5,8,1,1)
-        GameSteper+= 1
-    if GameSteper == 38:
-        create(6,10,2,1)
-        GameSteper+=1
 
 
-    print(GameSteper)
+
+
 
 
 
