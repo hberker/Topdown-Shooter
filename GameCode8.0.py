@@ -22,7 +22,6 @@ ammocart = pygame.image.load('ammo.png')
 machinegunImg = pygame.image.load('MachineGun1.png')
 
 shotgun = False
-
 machinegun = False
 
 getGun = (random.randrange(1,10) - 1)
@@ -198,13 +197,13 @@ class Player(pygame.sprite.Sprite):
         if playerPos == playerUpLeft:
             self.image = pygame.transform.scale(playerUpLeft, (50, 50))
     def shootUp(self):
-        bullet = Bullet(self.rect.centerx, self.rect.centery)
-        all_sprites.add(bullet)
-        bullets.add(bullet)
+            bullet = Bullet(self.rect.centerx, self.rect.centery)
+            all_sprites.add(bullet)
+            bullets.add(bullet)
     def shootRight(self):
-        bullet = BulletR(self.rect.centerx,self.rect.centery)
-        all_sprites.add(bullet)
-        bullets.add(bullet)
+            bullet = BulletR(self.rect.centerx, self.rect.centery)
+            all_sprites.add(bullet)
+            bullets.add(bullet)
     def shootLeft(self):
         bullet = BulletL(self.rect.centerx, self.rect.centery)
         all_sprites.add(bullet)
@@ -229,7 +228,6 @@ class Player(pygame.sprite.Sprite):
         bullet = BulletUL(self.rect.centerx, self.rect.centery)
         all_sprites.add(bullet)
         bullets.add(bullet)
-
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -632,8 +630,9 @@ powerUps = pygame.sprite.Group()
 player = Player()
 enemys = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
-keys = {'right':False, 'up':False, 'left':False, 'down':False}
 
+keys = {'right':False, 'up':False, 'left':False, 'down':False}
+GunType = {'shotGun': False, 'MachineGun': False, 'Rifle': True}
 
 all_sprites.add(player)
 
@@ -695,7 +694,78 @@ def create(wave_num, enemys, powerUps, ammoUps):
     createEnemy(enemys)
     createPowerUp(powerUps)
     createAmmoCart(ammoUps)
+def shootrifle():
+    if shootdir == 1:
+        player.shootUp()
+    if shootdir == 2:
+        player.shootRight()
+    if shootdir == 3:
+        player.shootLeft()
+    if shootdir == 4:
+        player.shootDown()
+    if shootdir == 5:
+        player.shootUpRight()
+    if shootdir == 8:
+        player.shootDownRight()
+    if shootdir == 6:
+        player.shootUpLeft()
+    if shootdir == 7:
+        player.shootDownLeft()
+def machineGunshoot():
+    if machinegun and GunType['MachineGun']:
+        if shootdir == 1 and machinegun and GunType['MachineGun']:
+            player.shootUp()
+        if shootdir == 2 and machinegun and GunType['MachineGun']:
+            player.shootRight()
+        if shootdir == 3 and machinegun and GunType['MachineGun']:
+            player.shootLeft()
+        if shootdir == 4 and machinegun and GunType['MachineGun']:
+            player.shootDown()
+        if shootdir == 5 and machinegun and GunType['MachineGun']:
+            player.shootUpRight()
+        if shootdir == 8 and machinegun and GunType['MachineGun']:
+            player.shootDownRight()
+        if shootdir == 6 and machinegun and GunType['MachineGun']:
+            player.shootUpLeft()
+        if shootdir == 7 and machinegun and GunType['MachineGun']:
+            player.shootDownLeft()
+def shotgunshoot():
+    if shootdir == 1:
+        print("???")
+        player.shootUp()
+        player.shootUpLeft()
+        player.shootUpRight()
+    if shootdir == 2:
+        player.shootRight()
+        player.shootUpRight()
+        player.shootDownRight()
+    if shootdir == 3:
+        player.shootLeft()
+        player.shootUpLeft()
+        player.shootDownLeft()
+    if shootdir == 4:
+        player.shootDown()
+        player.shootDownRight()
+        player.shootDownLeft()
+    if shootdir == 5:
+        player.shootUpRight()
+        player.shootUp()
+        player.shootRight()
+    if shootdir == 8:
+        player.shootDownRight()
+        player.shootRight()
+        player.shootDown()
+    if shootdir == 6:
+        player.shootUpLeft()
+        player.shootUp()
+        player.shootLeft()
+    if shootdir == 7:
+        player.shootDownLeft()
+        player.shootLeft()
+        player.shootDown()
+
 while on:
+    shooting = True
     if game_over:
         startScreen()
         game_over = False
@@ -705,7 +775,10 @@ while on:
         player = Player()
         player = Player()
         all_sprites.add(player)
+
+        GunType = {'shotGun': False, 'MachineGun': False, 'Rifle': True}
         keys = {'right': False, 'up': False, 'left': False, 'down': False}
+
         score = 0
         ups = 0
         machinegun = False
@@ -717,6 +790,19 @@ while on:
         if event.type == pygame.QUIT:
             on = False
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1:
+                GunType['Rifle'] = True
+                GunType['shotGun'] = False
+                GunType['MachineGun'] = False
+            if event.key == pygame.K_2:
+                GunType['MachineGun'] = True
+                GunType['Rifle'] = False
+                GunType['shotGun'] = False
+            if event.key == pygame.K_3:
+                GunType['shotGun'] = True
+                GunType['Rifle'] = False
+                GunType['MachineGun'] = False
+
             if event.key == pygame.K_w:
                 keys['up'] = True
             if event.key == pygame.K_a:
@@ -726,88 +812,19 @@ while on:
             if event.key == pygame.K_d:
                 keys['right'] = True
             if event.key == pygame.K_SPACE:
-                print(machinegun)
                 if numShots > 0:
-                    if machinegun == False:
-                        if numShots > 0:
-                            if shootdir == 1:
-                                player.shootUp()
-                            if shootdir == 2:
-                                player.shootRight()
-                            if shootdir == 3:
-                                player.shootLeft()
-                            if shootdir == 4:
-                                player.shootDown()
-                            if shootdir == 5:
-                                player.shootUpRight()
-                            if shootdir == 8:
-                                player.shootDownRight()
-                            if shootdir == 6:
-                                player.shootUpLeft()
-                            if shootdir == 7:
-                                player.shootDownLeft()
-                            numShots -= 1
-                        else:
-                            print("out of bullets")
-            if event.key == pygame.K_k:
-                if machinegun == True:
-                    if numShots > 0:
-                        if shootdir == 1:
-                            for i in range(100):
-                                player.shootUp()
-                                print('s')
-                        if shootdir == 2:
-                            player.shootRight()
-                        if shootdir == 3:
-                            player.shootLeft()
-                        if shootdir == 4:
-                            player.shootDown()
-                        if shootdir == 5:
-                            player.shootUpRight()
-                        if shootdir == 8:
-                            player.shootDownRight()
-                        if shootdir == 6:
-                            player.shootUpLeft()
-                        if shootdir == 7:
-                            player.shootDownLeft()
+                    if GunType['shotGun'] and shotgun:
+                        shotgunshoot()
+                        numShots -= 3
+                    if GunType['Rifle']:
+                        shootrifle()
                         numShots -= 1
+                    if GunType['MachineGun'] and machinegun:
+                        numShots -= 2
 
-            if event.key == pygame.K_m:
-                if shotgun == True:
-                    if numShots > 0:
-                        if shootdir == 1:
-                            player.shootUp()
-                            player.shootUpLeft()
-                            player.shootUpRight()
-                        if shootdir == 2:
-                            player.shootRight()
-                            player.shootUpRight()
-                            player.shootDownRight()
-                        if shootdir == 3:
-                            player.shootLeft()
-                            player.shootUpLeft()
-                            player.shootDownLeft()
-                        if shootdir == 4:
-                            player.shootDown()
-                            player.shootDownRight()
-                            player.shootDownLeft()
-                        if shootdir == 5:
-                            player.shootUpRight()
-                            player.shootUp()
-                            player.shootRight()
-                        if shootdir == 8:
-                            player.shootDownRight()
-                            player.shootRight()
-                            player.shootDown()
-                        if shootdir == 6:
-                            player.shootUpLeft()
-                            player.shootUp()
-                            player.shootLeft()
-                        if shootdir == 7:
-                            player.shootDownLeft()
-                            player.shootLeft()
-                            player.shootDown()
-                        numShots -= 5
+                else:
+                    print("out of bullets")
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_d:
                 keys['right'] = False
@@ -817,6 +834,9 @@ while on:
                 keys['down'] = False
             if event.key == pygame.K_a:
                 keys['left'] = False
+        if numShots > 0:
+            machineGunshoot()
+
 
         if keys['right']:
             shootdir = 2
@@ -847,6 +867,7 @@ while on:
             Player()
             playerPos = playerDownLeft
         if keys['right'] and keys['down']:
+
             shootdir = 8
             Player()
             playerPos = playerDownRight
