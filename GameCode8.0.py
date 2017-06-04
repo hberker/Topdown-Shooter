@@ -6,7 +6,7 @@ pygame.init()
 
 firstGame = True
 d = shelve.open('score.txt')
-d['score']= 0
+#d['score']= 0
 highscore = d['score']
 EnemyUpLeft = pygame.image.load('UpLeft.png')
 EnemyUpRight = pygame.image.load('UpRight.png')
@@ -25,6 +25,7 @@ shotgun = False
 machinegun = False
 
 getGun = (random.randrange(1,10) - 1)
+getMachine = (random.randrange(12,17) - 1)
 print(getGun)
 loseGun = (random.randrange(1,5) + getGun)
 print(loseGun)
@@ -821,7 +822,6 @@ while on:
                         numShots -= 1
                     if GunType['MachineGun'] and machinegun:
                         numShots -= 2
-
                 else:
                     print("out of bullets")
 
@@ -908,8 +908,6 @@ while on:
             playerHealth -= 10
     for x in cols:
         score += 1
-    if GameSteper == 0:
-        createMachineGun(1)
     if len(enemys) == 0:
         if GameSteper > 7:
             ups = random.randrange(1,2)
@@ -918,10 +916,9 @@ while on:
             createShotGun(1)
         if GameSteper == loseGun:
             shotgun = False
-        if GameSteper == 20:
+        if GameSteper == getMachine:
             createMachineGun(1)
             machinegun = True
-
         GameSteper += 1
 
 
