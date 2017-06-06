@@ -15,21 +15,21 @@ d = shelve.open('score.txt')
 highscore = d['score']
 
 #THIWS
-EnemyUpLeft = pygame.image.load('UpLeft.png')
-EnemyUpRight = pygame.image.load('UpRight.png')
-EnemyRight = pygame.image.load('Right.png')
-EnemyDown = pygame.image.load('Down.png')
-EnemyDownLeft = pygame.image.load('DownLeft.png')
-EnemyDownRight = pygame.image.load('DownRight.png')
-EnemyUp = pygame.image.load('Up1.png')
-EnemyLeft = pygame.image.load('Left1.png')
+EnemyUpLeft = pygame.image.load(path.join(img_dir,('UpLeft.png')))
+EnemyUpRight = pygame.image.load(path.join(img_dir,('UpRight.png')))
+EnemyRight = pygame.image.load(path.join(img_dir,('Right.png')))
+EnemyDown = pygame.image.load(path.join(img_dir,('Down.png')))
+EnemyDownLeft = pygame.image.load(path.join(img_dir,('DownLeft.png')))
+EnemyDownRight = pygame.image.load(path.join(img_dir,('DownRight.png')))
+EnemyUp = pygame.image.load(path.join(img_dir,('Up1.png')))
+EnemyLeft = pygame.image.load(path.join(img_dir,('Left1.png')))
 
-togglerImg = pygame.image.load('toggle.png')
+togglerImg = pygame.image.load(path.join(img_dir,('toggle.png')))
 
-ammocart = pygame.image.load('ammo.png')
+ammocart = pygame.image.load(path.join(img_dir,('ammo.png')))
 
-rifle = pygame.image.load('rifle.png')
-#rifle = pygame.image.load(path.join(img_dir,"rifle.png"))
+#rifle = pygame.image.load('rifle.png')
+rifle = pygame.image.load(path.join(img_dir,"rifle.png"))
 shotgun = False
 machinegun = False
 
@@ -42,20 +42,20 @@ print(loseGun)
 numShots = 100
 ups = 0
 
-machinegunImg = pygame.image.load('machinegun1.png')
-playerUp = pygame.image.load('playerUp.png')
-playerRight = pygame.image.load('playerRight.png')
-playerDown = pygame.image.load('playerDown.png')
-playerLeft = pygame.image.load('playerLeft.png')
-playerUpRight = pygame.image.load('playerUpRight.png')
-playerDownRight = pygame.image.load('playerBottomRight.png')
-playerDownLeft = pygame.image.load('playerBottomLeft.png')
-playerUpLeft = pygame.image.load('playerTopLeft.png')
+machinegunImg = pygame.image.load(path.join(img_dir,('machinegun1.png')))
+playerUp = pygame.image.load(path.join(img_dir,('playerUp.png')))
+playerRight = pygame.image.load(path.join(img_dir,('playerRight.png')))
+playerDown = pygame.image.load(path.join(img_dir,('playerDown.png')))
+playerLeft = pygame.image.load(path.join(img_dir,('playerLeft.png')))
+playerUpRight = pygame.image.load(path.join(img_dir,('playerUpRight.png')))
+playerDownRight = pygame.image.load(path.join(img_dir,('playerBottomRight.png')))
+playerDownLeft = pygame.image.load(path.join(img_dir,('playerBottomLeft.png')))
+playerUpLeft = pygame.image.load(path.join(img_dir,('playerTopLeft.png')))
 
-bulletimg = pygame.image.load('bullet.png')
-background = pygame.image.load('grass_14.png')
-medpac = pygame.image.load('med.jpg')
-shotgunImg = pygame.image.load('shotgun.png')
+bulletimg = pygame.image.load(path.join(img_dir,('bullet.png')))
+background = pygame.image.load(path.join(img_dir,('grass_14.png')))
+medpac = pygame.image.load(path.join(img_dir,('med.jpg')))
+shotgunImg = pygame.image.load(path.join(img_dir,('shotgun.png')))
 
 rifleimg = pygame.transform.scale(rifle, (70, 20))
 x = pygame.transform.scale(shotgunImg, (70, 20))
