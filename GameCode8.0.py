@@ -14,6 +14,7 @@ d = shelve.open('score.txt')
 #d['score']= 0
 highscore = d['score']
 
+#THIWS
 EnemyUpLeft = pygame.image.load('UpLeft.png')
 EnemyUpRight = pygame.image.load('UpRight.png')
 EnemyRight = pygame.image.load('Right.png')
