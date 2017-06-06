@@ -18,13 +18,10 @@ EnemyUp = pygame.image.load('Up1.png')
 EnemyLeft = pygame.image.load('Left1.png')
 
 togglerImg = pygame.image.load('toggle.png')
-toggle = pygame.transform.scale(togglerImg, (90, 40))
 
 ammocart = pygame.image.load('ammo.png')
 
 rifle = pygame.image.load('rifle.png')
-rifleimg = pygame.transform.scale(rifle, (70, 20))
-machinegunImg = pygame.image.load('MachineGun1.png')
 
 shotgun = False
 machinegun = False
@@ -37,6 +34,8 @@ print(loseGun)
 
 numShots = 100
 ups = 0
+
+machinegunImg = pygame.image.load('machinegun1.png')
 playerUp = pygame.image.load('playerUp.png')
 playerRight = pygame.image.load('playerRight.png')
 playerDown = pygame.image.load('playerDown.png')
@@ -51,6 +50,11 @@ background = pygame.image.load('grass_14.png')
 medpac = pygame.image.load('med.jpg')
 shotgunImg = pygame.image.load('shotgun.png')
 
+rifleimg = pygame.transform.scale(rifle, (70, 20))
+x = pygame.transform.scale(shotgunImg, (70, 20))
+toggle = pygame.transform.scale(togglerImg, (90, 40))
+y = pygame.transform.scale(machinegunImg, (50, 20))
+
 screenW = 640
 screenH = 640
 FPS = 60
@@ -59,6 +63,9 @@ playerPos = playerUp
 playerPos1 = playerUp
 playerHealth = 100
 numenem = 1
+
+keys = {'right':False, 'up':False, 'left':False, 'down':False}
+GunType = {'shotGun': False, 'MachineGun': False, 'Rifle': True}
 
 playerW = 30
 playerH = 50
@@ -86,11 +93,9 @@ def imagetoggle(shotgun,machinegun,guntype):
     screen.blit(rifleimg,(380, 600))
     if shotgun and GunType['shotGun']:
         screen.blit(toggle,(530,590))
-        x = pygame.transform.scale(shotgunImg, (70, 20))
         screen.blit(x, (540, 600))
     elif machinegun and GunType['MachineGun']:
         screen.blit(toggle, (450, 590))
-        y = pygame.transform.scale(machinegunImg, (50, 20))
         screen.blit(y, (460, 600))
     else:
         screen.blit(toggle,(370,590))
@@ -656,8 +661,6 @@ player = Player()
 enemys = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
 
-keys = {'right':False, 'up':False, 'left':False, 'down':False}
-GunType = {'shotGun': False, 'MachineGun': False, 'Rifle': True}
 
 all_sprites.add(player)
 
@@ -678,6 +681,7 @@ def wavescreen(wave):
     wave = str(wave)
     screen.blit(background, background_rect)
     healthbar(playerHealth)
+    imagetoggle(shotgun, machinegun, GunType)
     ammobar(numShots)
     draw_text(screen, "Kills " + str(score), 30, screenW / 2, 10)
     all_sprites.draw(screen)
