@@ -22,6 +22,8 @@ toggle = pygame.transform.scale(togglerImg, (90, 40))
 
 ammocart = pygame.image.load('ammo.png')
 
+rifle = pygame.image.load('rifle.png')
+rifleimg = pygame.transform.scale(rifle, (70, 20))
 machinegunImg = pygame.image.load('MachineGun1.png')
 
 shotgun = False
@@ -81,14 +83,18 @@ def imagetoggle(shotgun,machinegun,guntype):
     screen.blit(x, (540, 600))
     y = pygame.transform.scale(machinegunImg, (50, 20))
     screen.blit(y, (460, 600))
+    screen.blit(rifleimg,(380, 600))
     if shotgun and GunType['shotGun']:
         screen.blit(toggle,(530,590))
         x = pygame.transform.scale(shotgunImg, (70, 20))
         screen.blit(x, (540, 600))
-    if machinegun and GunType['MachineGun']:
-        screen.blit(toggle, (440, 590))
+    elif machinegun and GunType['MachineGun']:
+        screen.blit(toggle, (450, 590))
         y = pygame.transform.scale(machinegunImg, (50, 20))
         screen.blit(y, (460, 600))
+    else:
+        screen.blit(toggle,(370,590))
+        screen.blit(rifleimg,(380,600))
 
 
 def ammobar(numshots):
