@@ -1,13 +1,19 @@
 import pygame
 import random
 import shelve
+from os import path
+
 import math
+
+img_dir = path.join(path.dirname(__file__),'img')
 pygame.init()
 
 firstGame = True
+
 d = shelve.open('score.txt')
 #d['score']= 0
 highscore = d['score']
+
 EnemyUpLeft = pygame.image.load('UpLeft.png')
 EnemyUpRight = pygame.image.load('UpRight.png')
 EnemyRight = pygame.image.load('Right.png')
@@ -22,7 +28,7 @@ togglerImg = pygame.image.load('toggle.png')
 ammocart = pygame.image.load('ammo.png')
 
 rifle = pygame.image.load('rifle.png')
-
+#rifle = pygame.image.load(path.join(img_dir,"rifle.png"))
 shotgun = False
 machinegun = False
 
