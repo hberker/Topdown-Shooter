@@ -17,6 +17,9 @@ EnemyDownRight = pygame.image.load('DownRight.png')
 EnemyUp = pygame.image.load('Up1.png')
 EnemyLeft = pygame.image.load('Left1.png')
 
+togglerImg = pygame.image.load('toggle.png')
+toggle = pygame.transform.scale(togglerImg, (90, 40))
+
 ammocart = pygame.image.load('ammo.png')
 
 machinegunImg = pygame.image.load('MachineGun1.png')
@@ -24,8 +27,8 @@ machinegunImg = pygame.image.load('MachineGun1.png')
 shotgun = False
 machinegun = False
 
-getGun = (random.randrange(1,10) - 1)
-getMachine = (random.randrange(12,17) - 1)
+getGun = 0 #(random.randrange(1,10) - 1)
+getMachine = 0#(random.randrange(12,17) - 1)
 print(getGun)
 loseGun = (random.randrange(1,5) + getGun)
 print(loseGun)
@@ -73,6 +76,21 @@ blue = (0,0,255)
 yellow = (255,255,51)
 
 font_name = pygame.font.match_font('arial')
+def imagetoggle(shotgun,machinegun,guntype):
+    x = pygame.transform.scale(shotgunImg, (70, 20))
+    screen.blit(x, (540, 600))
+    y = pygame.transform.scale(machinegunImg, (50, 20))
+    screen.blit(y, (460, 600))
+    if shotgun and GunType['shotGun']:
+        screen.blit(toggle,(530,590))
+        x = pygame.transform.scale(shotgunImg, (70, 20))
+        screen.blit(x, (540, 600))
+    if machinegun and GunType['MachineGun']:
+        screen.blit(toggle, (440, 590))
+        y = pygame.transform.scale(machinegunImg, (50, 20))
+        screen.blit(y, (460, 600))
+
+
 def ammobar(numshots):
     if numShots > 75:
         barColor = green
@@ -930,6 +948,7 @@ while on:
 
     screen.fill(white)
     screen.blit(background, background_rect)
+    imagetoggle(shotgun,machinegun, GunType)
     healthbar(playerHealth)
     ammobar(numShots)
     all_sprites.draw(screen)
