@@ -18,10 +18,45 @@
       <file leaf-file-name="GameCode8.0.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GameCode8.0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-759">
-              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="851">
+              <caret line="717" column="25" lean-forward="true" selection-start-line="717" selection-start-column="25" selection-end-line="717" selection-end-column="27" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameCode1v1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameCode1v1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="313" column="25" lean-forward="true" selection-start-line="313" selection-start-column="25" selection-end-line="313" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#5742#8970#0" expanded="false" />
+                <element signature="e#14313#14878#0" expanded="false" />
+                <element signature="e#14922#15489#0" expanded="false" />
+                <element signature="e#15532#16096#0" expanded="false" />
+                <element signature="e#16139#16700#0" expanded="false" />
+                <element signature="e#16743#17713#0" expanded="false" />
+                <element signature="e#17752#18631#0" expanded="false" />
+                <element signature="e#19105#19197#0" expanded="false" />
+                <element signature="e#19225#19312#0" expanded="false" />
+                <element signature="e#23005#23075#0" expanded="false" />
+                <element signature="e#23114#23184#0" expanded="false" />
+                <element signature="e#23239#23312#0" expanded="false" />
+                <element signature="e#23366#23438#0" expanded="false" />
+                <element signature="e#23494#23568#0" expanded="false" />
+                <element signature="e#23624#23697#0" expanded="false" />
+                <element signature="e#23736#23805#0" expanded="false" />
+                <element signature="e#23841#23907#0" expanded="false" />
+                <element signature="e#23945#24013#0" expanded="false" />
+                <element signature="e#24051#24119#0" expanded="false" />
+                <element signature="e#24173#24244#0" expanded="false" />
+                <element signature="e#24297#24367#0" expanded="false" />
+                <element signature="e#24422#24494#0" expanded="false" />
+                <element signature="e#24550#24623#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -43,6 +78,7 @@
       <find>print</find>
       <find>machinegunImg</find>
       <find>machinegun1.png</find>
+      <find>background</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -62,18 +98,19 @@
         <option value="$PROJECT_DIR$/GameCode7.0.py" />
         <option value="$PROJECT_DIR$/GameCode6.0.py" />
         <option value="$USER_HOME$/Desktop/MYGAMEPROJECT/GameCode8.0.py" />
+        <option value="$PROJECT_DIR$/GameCode1v1.py" />
         <option value="$PROJECT_DIR$/GameCode8.0.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-13" />
-    <option name="y" value="-13" />
-    <option name="width" value="2762" />
-    <option name="height" value="1770" />
+    <option name="x" value="-10" />
+    <option name="y" value="1" />
+    <option name="width" value="2750" />
+    <option name="height" value="1753" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -86,24 +123,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameDesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameDesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/GameCode.py" />
@@ -126,24 +146,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.GameCode8.0">
-    <configuration default="false" name="GameCode5.0" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="GameDesign" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GameCode5.0.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="GameCode6.0" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -216,6 +218,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="GameCode1v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GameDesign" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GameCode1v1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -281,19 +301,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.GameCode5.0" />
-      <item index="1" class="java.lang.String" itemvalue="Python.GameCode6.0" />
-      <item index="2" class="java.lang.String" itemvalue="Python.GameCode7.0" />
-      <item index="3" class="java.lang.String" itemvalue="Python.GameCode8.0" />
-      <item index="4" class="java.lang.String" itemvalue="Python.GameCode8.0 (1)" />
+      <item index="0" class="java.lang.String" itemvalue="Python.GameCode6.0" />
+      <item index="1" class="java.lang.String" itemvalue="Python.GameCode7.0" />
+      <item index="2" class="java.lang.String" itemvalue="Python.GameCode8.0" />
+      <item index="3" class="java.lang.String" itemvalue="Python.GameCode8.0 (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.GameCode1v1" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.GameCode8.0" />
-        <item index="1" class="java.lang.String" itemvalue="Python.GameCode8.0 (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.GameCode6.0" />
-        <item index="3" class="java.lang.String" itemvalue="Python.GameCode7.0" />
-        <item index="4" class="java.lang.String" itemvalue="Python.GameCode5.0" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GameCode1v1" />
+        <item index="2" class="java.lang.String" itemvalue="Python.GameCode8.0 (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.GameCode6.0" />
+        <item index="4" class="java.lang.String" itemvalue="Python.GameCode7.0" />
       </list>
     </recent_temporary>
   </component>
@@ -320,7 +340,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="2762" height="1770" extended-state="6" />
+    <frame x="-10" y="1" width="2750" height="1753" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26787117" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -329,7 +349,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329428" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19372442" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19323671" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -375,7 +395,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -457,16 +477,49 @@
     <entry file="file://$PROJECT_DIR$/GameCode5.0.py" />
     <entry file="file://$PROJECT_DIR$/GameCode7.0.py" />
     <entry file="file://$PROJECT_DIR$/GameCode6.0.py" />
+    <entry file="file://$USER_HOME$/Desktop/MYGAMEPROJECT/GameCode8.0.py" />
+    <entry file="file://$PROJECT_DIR$/GameCode1v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="313" column="25" lean-forward="true" selection-start-line="313" selection-start-column="25" selection-end-line="313" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#5742#8970#0" expanded="false" />
+            <element signature="e#14313#14878#0" expanded="false" />
+            <element signature="e#14922#15489#0" expanded="false" />
+            <element signature="e#15532#16096#0" expanded="false" />
+            <element signature="e#16139#16700#0" expanded="false" />
+            <element signature="e#16743#17713#0" expanded="false" />
+            <element signature="e#17752#18631#0" expanded="false" />
+            <element signature="e#19105#19197#0" expanded="false" />
+            <element signature="e#19225#19312#0" expanded="false" />
+            <element signature="e#23005#23075#0" expanded="false" />
+            <element signature="e#23114#23184#0" expanded="false" />
+            <element signature="e#23239#23312#0" expanded="false" />
+            <element signature="e#23366#23438#0" expanded="false" />
+            <element signature="e#23494#23568#0" expanded="false" />
+            <element signature="e#23624#23697#0" expanded="false" />
+            <element signature="e#23736#23805#0" expanded="false" />
+            <element signature="e#23841#23907#0" expanded="false" />
+            <element signature="e#23945#24013#0" expanded="false" />
+            <element signature="e#24051#24119#0" expanded="false" />
+            <element signature="e#24173#24244#0" expanded="false" />
+            <element signature="e#24297#24367#0" expanded="false" />
+            <element signature="e#24422#24494#0" expanded="false" />
+            <element signature="e#24550#24623#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GameCode8.0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-759">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="851">
+          <caret line="717" column="25" lean-forward="true" selection-start-line="717" selection-start-column="25" selection-end-line="717" selection-end-column="27" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/MYGAMEPROJECT/GameCode8.0.py" />
   </component>
 </project>
