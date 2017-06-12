@@ -11,10 +11,11 @@ pygame.init()
 firstGame = True
 gernade = 0
 d = shelve.open('score.txt')
-#d['score']= 0
-highscore = d['score']
+d['score']= 0
 
+highscore = d['score']
 #THIWS
+
 EnemyUpLeft = pygame.image.load(path.join(img_dir,('UpLeft.png')))
 EnemyUpRight = pygame.image.load(path.join(img_dir,('UpRight.png')))
 EnemyRight = pygame.image.load(path.join(img_dir,('Right.png')))
@@ -992,8 +993,8 @@ while on:
         if GameSteper > 7:
             ups = random.randrange(1,2)
         create(GameSteper + 1,GameSteper + 2,ups,ups)
-        if GameSteper == 1:
-            gernade += 5
+        if GameSteper == 5:
+
             createGernade(5)
         if GameSteper == getGun:
             createShotGun(1)
